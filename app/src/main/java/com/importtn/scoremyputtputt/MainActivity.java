@@ -12,24 +12,24 @@ import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    protected int hole;
+    protected List<Player> players;
+
+    // Components
+    TextView textHoleHeader = findViewById(R.id.textHoleHeader);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        initializeGame();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -52,5 +52,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void initializeGame() {
+        hole = 1;
+
+        createPlayers();
+
+        textHoleHeader.setText("Hole " + hole + " of 18");
+    }
+
+    private void createPlayers() {
+        players = new ArrayList<Player>();
+
+        players.add(new Player("Player 1", ""));
+        players.add(new Player("Player 2", ""));
+        players.add(new Player("Player 3", ""));
+        players.add(new Player("Player 4", ""));
     }
 }
