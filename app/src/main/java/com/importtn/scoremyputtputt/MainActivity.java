@@ -22,14 +22,16 @@ public class MainActivity extends AppCompatActivity {
     protected List<Player> players;
 
     // Components
-    TextView textHoleHeader = findViewById(R.id.textHoleHeader);
+    TextView textHoleHeader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        initializeGame();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        textHoleHeader = findViewById(R.id.textHoleHeader);
+
+        initializeGame();
     }
 
     @Override
