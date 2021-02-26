@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Color palette: https://paletton.com/#uid=13X0u0kl1Wx1x+IcEXDsUWkWEVB -->
+    <color name="primary">#6A74F4</color>
+    <color name="primary_dark">#3644F4</color>
+    <color name="primary_darkest">#0516F2</color>
+    <color name="secondary">#A3A97F</color>
+    <color name="background">#F4F5FE</color>
+
+    <!-- Default -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
