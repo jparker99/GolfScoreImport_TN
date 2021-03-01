@@ -3,10 +3,12 @@ package com.importtn.scoremyputtputt;
 public class Player {
     private String name;
     private String icon; // path to where icon is saved
+    private int[] scores;
 
     public Player(String name, String icon) {
         this.name = name;
         this.icon = icon;
+        this.scores = new int[18];
     }
 
     public String getName() {
@@ -23,5 +25,13 @@ public class Player {
 
     private void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public int[] getScores() {
+        return scores;
+    }
+
+    public void setScores(int[] scores) {
+        this.scores = scores;
     }
 }

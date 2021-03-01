@@ -2,22 +2,15 @@ package com.importtn.scoremyputtputt;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class EnterScore extends AppCompatActivity {
     protected int hole;
     protected List<Player> players;
 
@@ -27,11 +20,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_main);
 
         textHoleHeader = findViewById(R.id.textHoleHeader);
 
-        initializeGame();
     }
 
     @Override
@@ -56,20 +48,4 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initializeGame() {
-        hole = 1;
-
-        createPlayers();
-
-        textHoleHeader.setText("Hole " + hole + " of 18");
-    }
-
-    private void createPlayers() {
-        players = new ArrayList<Player>();
-
-        players.add(new Player("Player 1", ""));
-        players.add(new Player("Player 2", ""));
-        players.add(new Player("Player 3", ""));
-        players.add(new Player("Player 4", ""));
-    }
 }
