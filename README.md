@@ -6,4 +6,4 @@ We need to re-implement the "overview" screen that allows us to view the total s
 
 Prof likes our overall workflow, and we should definitely keep to the idea of a streamlined process with minimal user interaction.
 
--We need to "pretty up" our app. Prof wants to see pleasing colors and a clean layout.
+We need to "pretty up" our app. Prof wants to see pleasing colors and a clean layout.
