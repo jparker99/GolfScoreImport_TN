@@ -51,7 +51,7 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:text="@string/zeroTxt"
                 android:autofillHints="Enter Strokes."
                 tools:ignore="LabelFor" />
@@ -73,7 +73,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
-            android:text="@string/hole_of_18_Txt"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -83,6 +82,56 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.025" />
+
+        <Button
+            android:id="@+id/nextPlayerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_playerTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.901"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.974" />
+
+        <Button
+            android:id="@+id/nextHoleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/next_holeTxt"
+            app:layout_constraintBottom_toTopOf="@+id/nextPlayerButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.909"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976" />
+
+        <Button
+            android:id="@+id/exitGameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exit_gameTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.974" />
+
+        <TextView
+            android:id="@+id/playerNameDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/strokesLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintTop_toBottomOf="@+id/textHoleHeader"
+            android:gravity="center" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </RelativeLayout>

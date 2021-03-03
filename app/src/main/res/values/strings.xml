@@ -15,5 +15,11 @@
     <string name="minusTxt">-</string>
     <string name="zeroTxt">0</string>
     <string name="plusTxt">+</string>
-    <string name="hole_of_18_Txt">Hole # of 18</string>
+    <string name="p1_hole_ind">Hole</string>
+    <string name="p2_hole_ind">of 18</string>
+    <string name="placeholderTxt">Placeholder</string>
+    <string name="next_playerTxt">Next Player</string>
+    <string name="next_holeTxt">Next Hole</string>
+    <string name="exit_gameTxt">Exit Game</string>
+    <string name="finish_gameTxt">Finish Game</string>
 </resources>

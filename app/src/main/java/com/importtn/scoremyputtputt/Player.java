@@ -1,6 +1,8 @@
 package com.importtn.scoremyputtputt;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     private String name;
     private String icon; // path to where icon is saved
     private int[] scores;
