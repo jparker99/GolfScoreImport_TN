@@ -17,16 +17,16 @@
             android:id="@+id/strokesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/strokesTxt"
             android:gravity="center"
+            android:text="@string/strokesTxt"
             android:textColor="@color/black"
-            app:layout_constraintBottom_toTopOf="@+id/strokeViewEdit"
+            app:layout_constraintBottom_toTopOf="@+id/tempPlayerCount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
-            android:id="@+id/strokeViewEdit"
+            android:id="@+id/tempPlayerCount"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:orientation="horizontal"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textHoleHeader">
 
             <Button
-                android:id="@+id/reduceStrokeButton"
+                android:id="@+id/tempReducePlayers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -46,18 +46,18 @@
                 app:backgroundTint="#FFFFFF" />
 
             <EditText
-                android:id="@+id/currentStrokeTextBox"
+                android:id="@+id/tempNumberPlayers"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:autofillHints="Enter Strokes."
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
                 android:text="@string/zeroTxt"
-                android:autofillHints="Enter Strokes."
                 tools:ignore="LabelFor" />
 
             <Button
-                android:id="@+id/increaseStrokeButton"
+                android:id="@+id/tempIncreasePlayers"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -73,6 +73,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
+            android:text="@string/loadingTxt"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -123,14 +124,15 @@
             android:id="@+id/playerNameDisplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/strokesLabel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="center"
+            android:text="Loading..."
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintTop_toBottomOf="@+id/textHoleHeader"
-            android:gravity="center" />
+            app:layout_constraintBottom_toTopOf="@+id/strokesLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textHoleHeader" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
