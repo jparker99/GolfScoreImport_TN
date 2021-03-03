@@ -4,8 +4,12 @@
     <color name="primary">#6A74F4</color>
     <color name="primary_dark">#3644F4</color>
     <color name="primary_darkest">#0516F2</color>
-    <color name="secondary">#A3A97F</color>
+    <color name="secondary">#A3A9F7</color>
     <color name="background">#F4F5FE</color>
+
+    <!-- Elements -->
+    <color name="text_input">#EDEFFE</color>
+    <color name="text_placeholder">#A9A9AF</color>
 
     <!-- Default -->
     <color name="purple_200">#FFBB86FC</color>
