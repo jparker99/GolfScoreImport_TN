@@ -3,24 +3,21 @@ package com.importtn.scoremyputtputt;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class EnterScore extends AppCompatActivity {
     Game gameObject;
     Player currentPlayer;
     List<Player> players;
-    Iterator playerIterator;
+    Iterator<Player> playerIterator;
 
     // Components
     TextView textHoleHeader;
@@ -44,7 +41,7 @@ public class EnterScore extends AppCompatActivity {
         setContentView(R.layout.layout_enter_score);
 
         Intent i = getIntent();
-        gameObject = (Game)i.getSerializableExtra("gameObject");
+        gameObject = (Game) i.getSerializableExtra("gameObject");
 
 
         textHoleHeader = findViewById(R.id.textHoleHeader);
@@ -52,36 +49,36 @@ public class EnterScore extends AppCompatActivity {
         nextHoleButton = findViewById(R.id.nextHoleButton);
         nextPlayerButton = findViewById(R.id.nextPlayerButton);
         exitGameButton = findViewById(R.id.exitGameButton);
-        incrementScore = findViewById(R.id.increaseStrokeButton);
-        decrementScore = findViewById(R.id.reduceStrokeButton);
-        strokesDisplay = findViewById(R.id.currentStrokeTextBox);
+        incrementScore = findViewById(R.id.tempIncreasePlayers);
+        decrementScore = findViewById(R.id.tempReducePlayers);
+        strokesDisplay = findViewById(R.id.tempNumberPlayers);
 
         nextHoleButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 nextHole();
             }
         });
 
         nextPlayerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 nextPlayer();
             }
         });
 
         exitGameButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 exitGame();
             }
         });
 
         incrementScore.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 incrementStroke();
             }
         });
 
         decrementScore.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
+            public void onClick(View v) {
                 decrementStroke();
             }
         });
@@ -92,53 +89,70 @@ public class EnterScore extends AppCompatActivity {
 
         players = gameObject.getPlayers();
         playerIterator = players.iterator();
-        currentPlayer = (Player) playerIterator.next();
+        currentPlayer = playerIterator.next();
 
         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         displayPlayerName.setText(currentPlayer.getName());
-        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole()-1]));
+        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
 
 
     }
 
     @SuppressLint("SetTextI18n")
-    private void incrementStroke(){
+    private void incrementStroke() {
         int[] scores = currentPlayer.getScores();
-        scores[gameObject.getCurrentHole()-1]++;
+        scores[gameObject.getCurrentHole() - 1]++;
         currentPlayer.setScores(scores);
-        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole()-1]));
+        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
 
     @SuppressLint("SetTextI18n")
-    private void decrementStroke(){
+    private void decrementStroke() {
         int[] scores = currentPlayer.getScores();
-        scores[gameObject.getCurrentHole()-1]--;
-        currentPlayer.setScores(scores);
-        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole()-1]));
+        if (scores[gameObject.getCurrentHole() - 1] > 0) {
+            scores[gameObject.getCurrentHole() - 1]--;
+            currentPlayer.setScores(scores);
+            strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+        }
     }
 
     @SuppressLint("SetTextI18n")
-    private void nextHole(){
-        gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
-        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-        playerIterator = gameObject.getPlayers().iterator();
-        currentPlayer = (Player) playerIterator.next();
-        displayPlayerName.setText(currentPlayer.getName());
-        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole()-1]));
+    private void nextHole() {
+        if (gameObject.getCurrentHole() < 17) {
+            gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
+            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            playerIterator = gameObject.getPlayers().iterator();
+            currentPlayer = playerIterator.next();
+            displayPlayerName.setText(currentPlayer.getName());
+            strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+        } else {
+            gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
+            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            playerIterator = gameObject.getPlayers().iterator();
+            currentPlayer = playerIterator.next();
+            displayPlayerName.setText(currentPlayer.getName());
+            strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+            exitGameButton.setText(finish_game_txt);
+            nextHoleButton.setVisibility(View.INVISIBLE);
+        }
+
+
     }
 
     @SuppressLint("SetTextI18n")
-    private void nextPlayer(){
+    private void nextPlayer() {
         if (!playerIterator.hasNext()) {
             playerIterator = players.iterator();
         }
-        currentPlayer = (Player) playerIterator.next();
+        currentPlayer = playerIterator.next();
         displayPlayerName.setText(currentPlayer.getName());
-        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole()-1]));
+        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
 
-    private void exitGame(){
-
+    private void exitGame() {
+        Intent i = new Intent(this, EndScreen.class);
+        i.putExtra("gameObject", gameObject);
+        startActivity(i);
     }
 
 }

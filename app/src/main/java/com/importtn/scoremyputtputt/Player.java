@@ -2,7 +2,7 @@ package com.importtn.scoremyputtputt;
 
 import java.io.Serializable;
 
-public class Player implements Serializable {
+public class Player implements Serializable, Comparable<Player> {
     private String name;
     private String icon; // path to where icon is saved
     private int[] scores;
@@ -35,5 +35,24 @@ public class Player implements Serializable {
 
     public void setScores(int[] scores) {
         this.scores = scores;
+    }
+
+    public int getTotalScore(){
+        int sum = 0;
+        for(int score: scores){
+            sum += score;
+        }
+        return sum;
+    }
+
+    @Override
+    public int compareTo(Player otherPlayer) {
+        if(otherPlayer.getTotalScore() > this.getTotalScore()){
+            return -1;
+        } else if (otherPlayer.getTotalScore() < this.getTotalScore()){
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

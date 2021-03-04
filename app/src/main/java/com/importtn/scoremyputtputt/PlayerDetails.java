@@ -2,8 +2,6 @@ package com.importtn.scoremyputtputt;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -27,14 +25,10 @@ public class PlayerDetails extends AppCompatActivity {
         bgn = findViewById(R.id.placeHolderStGameButton);
 
         Intent i = getIntent();
-        gameObject = (Game)i.getSerializableExtra("gameObject");
+        gameObject = (Game) i.getSerializableExtra("gameObject");
 
-        bgn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                finalizePlayers();
-            }
-        });
     }
+
 
     private String retrieveName(int id) {
         EditText editText = findViewById((id));
@@ -44,7 +38,7 @@ public class PlayerDetails extends AppCompatActivity {
         return editText.getText().toString();
     }
 
-    private void finalizePlayers(){
+    private void finalizePlayers() {
         //Placeholder method, will need to have player names and icons later.
         players.add(new Player(retrieveName(R.id.player1Name), ""));
         players.add(new Player(retrieveName(R.id.player2Name), ""));
@@ -58,4 +52,6 @@ public class PlayerDetails extends AppCompatActivity {
         finishAffinity();
         startActivity(i);
     }
+
+
 }
