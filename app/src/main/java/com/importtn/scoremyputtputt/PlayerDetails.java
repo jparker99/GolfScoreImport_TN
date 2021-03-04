@@ -83,10 +83,21 @@ public class PlayerDetails extends AppCompatActivity {
 
     private void finalizePlayers(){
         //Placeholder method, will need to have player names and icons later.
-        players.add(new Player(retrieveName(R.id.player1Name), ""));
-        players.add(new Player(retrieveName(R.id.player2Name), ""));
-        players.add(new Player(retrieveName(R.id.player3Name), ""));
-        players.add(new Player(retrieveName(R.id.player4Name), ""));
+        if(!retrieveName(R.id.player1Name).equals("")){
+            players.add(new Player(retrieveName(R.id.player1Name), ""));
+
+        }
+        if(!retrieveName(R.id.player2Name).equals("")) {
+            players.add(new Player(retrieveName(R.id.player2Name), ""));
+        }
+        if(!retrieveName(R.id.player3Name).equals("")) {
+
+            players.add(new Player(retrieveName(R.id.player3Name), ""));
+        }
+        if(!retrieveName(R.id.player4Name).equals("")) {
+
+            players.add(new Player(retrieveName(R.id.player4Name), ""));
+        }
 
         for(int i = 0; i<numPlayers; i++){
             players.add(new Player(names.get(i), ""));
