@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class EndScreen extends AppCompatActivity {
     Game gameObject;
+
     RecyclerView mRecyclerView;
     BoardAdapter mAdapter;
     Button finishButton;
@@ -32,7 +33,7 @@ public class EndScreen extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.listPlayerObjects);
         mAdapter = new BoardAdapter(gameObject);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
 
     }

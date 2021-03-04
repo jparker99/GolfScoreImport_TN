@@ -27,6 +27,7 @@ public class EnterScore extends AppCompatActivity {
     Button exitGameButton;
     Button incrementScore;
     Button decrementScore;
+    Button overviewButton;
     EditText strokesDisplay;
 
     String p1_hole_ind;
@@ -42,6 +43,7 @@ public class EnterScore extends AppCompatActivity {
 
         Intent i = getIntent();
         gameObject = (Game) i.getSerializableExtra("gameObject");
+        currentPlayer = (Player) i.getSerializableExtra("currentPlayer");
 
 
         textHoleHeader = findViewById(R.id.textHoleHeader);
@@ -52,6 +54,7 @@ public class EnterScore extends AppCompatActivity {
         incrementScore = findViewById(R.id.tempIncreasePlayers);
         decrementScore = findViewById(R.id.tempReducePlayers);
         strokesDisplay = findViewById(R.id.tempNumberPlayers);
+        overviewButton = findViewById(R.id.overviewButton);
 
         nextHoleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -83,14 +86,29 @@ public class EnterScore extends AppCompatActivity {
             }
         });
 
+        overviewButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goOverview();
+            }
+        });
+
         p1_hole_ind = getResources().getString(R.string.p1_hole_ind);
         p2_hole_ind = getResources().getString(R.string.p2_hole_ind);
         finish_game_txt = getResources().getString(R.string.finish_gameTxt);
 
         players = gameObject.getPlayers();
         playerIterator = players.iterator();
-        currentPlayer = playerIterator.next();
-
+        if (currentPlayer == null) {
+            currentPlayer = playerIterator.next();
+        } else {
+           boolean t = true;
+           while(t){
+               Player tmp = playerIterator.next();
+               if(tmp.getName().equals(currentPlayer.getName())){
+                   t = false;
+               }
+           }
+        }
         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         displayPlayerName.setText(currentPlayer.getName());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
@@ -152,6 +170,13 @@ public class EnterScore extends AppCompatActivity {
     private void exitGame() {
         Intent i = new Intent(this, EndScreen.class);
         i.putExtra("gameObject", gameObject);
+        startActivity(i);
+    }
+
+    private void goOverview() {
+        Intent i = new Intent(this, Overview.class);
+        i.putExtra("gameObject", gameObject);
+        i.putExtra("currentPlayer", currentPlayer);
         startActivity(i);
     }
 
