@@ -11,7 +11,9 @@
         android:id="@+id/editText"
         android:layout_width="219dp"
         android:layout_height="74dp"
-        android:hint="add more players here!"/>
+        android:hint="add more players here!"
+        android:textColorHint="@color/primary"
+        />
 
     <Button
         android:id="@+id/button"
@@ -19,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/editText"
         android:text="Add+"
+        android:backgroundTint="@color/primary"
+        android:textColor="@android:color/white"
         android:layout_toRightOf="@id/editText" />
 
     <LinearLayout
