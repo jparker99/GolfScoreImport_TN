@@ -2,7 +2,9 @@ package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -48,8 +50,9 @@ public class PlayerDetails extends AppCompatActivity {
         mButton = (Button) findViewById(R.id.button);
         mButton.setOnClickListener(onClick());
         TextView textView = new TextView(this);
-        textView.setText("New text");
-
+    /*
+    no
+     */
     }
     private View.OnClickListener onClick() {
         return new View.OnClickListener() {
@@ -57,20 +60,25 @@ public class PlayerDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mLayout.addView(createNewTextView(mEditText.getText().toString()));
+
             }
         };
     }
 
     private TextView createNewTextView(String text) {
-        final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        final TextView textView = new TextView(this);
-        textView.setLayoutParams(lparams);
-        textView.setText(text);
-        names.add(text);
-        numPlayers++;
+            final ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            final TextView textView = new TextView(this);
+            textView.setLayoutParams(lparams);
+            textView.setText(text);
+            textView.setTextColor(Color.parseColor("#6A74F4"));
+
+            names.add(text);
+             mEditText.getText().clear();
+
+            numPlayers++;
 
 
-        return textView;
+            return textView;
     }
 
     private String retrieveName(int id) {
