@@ -59,7 +59,7 @@ public class PlayerDetails extends AppCompatActivity {
         i.putExtra("gameObject", gameObject);
         startActivity(i);
     }
-
+    @Override
     public void onBackPressed(){
         Intent i = new Intent(this, Startup.class);
         startActivity(i);
