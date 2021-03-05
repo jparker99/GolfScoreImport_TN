@@ -1,8 +1,10 @@
 package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -12,7 +14,11 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.view.LayoutInflater;
+import android.widget.Toast;
 
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -41,6 +47,7 @@ public class PlayerDetails extends AppCompatActivity {
 
         bgn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+
                 finalizePlayers();
             }
         });
@@ -57,11 +64,38 @@ public class PlayerDetails extends AppCompatActivity {
     private View.OnClickListener onClick() {
         return new View.OnClickListener() {
 
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                mLayout.addView(createNewTextView(mEditText.getText().toString()));
+                //mLayout.addView(createNewTextView(mEditText.getText().toString()));
+//                if (mEditText.getText().toString().equals("")) {
+//                    Toast.makeText(getApplication(), "No blank players",
+//                            Toast.LENGTH_LONG).show();
+//                } else{
 
+
+                LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                final View addView = layoutInflater.inflate(R.layout.row, null);
+                TextView playerText = (TextView) addView.findViewById(R.id.textout);
+                playerText.setText(mEditText.getText().toString());
+                names.add(mEditText.getText().toString());
+
+
+                mLayout.addView(addView);
+                mEditText.getText().clear();
+
+                Button buttonRemove = (Button) addView.findViewById(R.id.remove);
+
+                buttonRemove.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        ((LinearLayout) addView.getParent()).removeView(addView);
+                    }
+                });
             }
+
+            //}
         };
     }
 
@@ -73,7 +107,7 @@ public class PlayerDetails extends AppCompatActivity {
             textView.setTextColor(Color.parseColor("#6A74F4"));
 
             names.add(text);
-             mEditText.getText().clear();
+            mEditText.getText().clear();
 
             numPlayers++;
 
@@ -91,23 +125,23 @@ public class PlayerDetails extends AppCompatActivity {
 
     private void finalizePlayers(){
         //Placeholder method, will need to have player names and icons later.
-        if(!retrieveName(R.id.player1Name).equals("")){
-            players.add(new Player(retrieveName(R.id.player1Name), ""));
+//        if(!retrieveName(R.id.player1Name).equals("")){
+//            players.add(new Player(retrieveName(R.id.player1Name), ""));
+//
+//        }
+//        if(!retrieveName(R.id.player2Name).equals("")) {
+//            players.add(new Player(retrieveName(R.id.player2Name), ""));
+//        }
+//        if(!retrieveName(R.id.player3Name).equals("")) {
+//
+//            players.add(new Player(retrieveName(R.id.player3Name), ""));
+//        }
+//        if(!retrieveName(R.id.player4Name).equals("")) {
+//
+//            players.add(new Player(retrieveName(R.id.player4Name), ""));
+//        }
 
-        }
-        if(!retrieveName(R.id.player2Name).equals("")) {
-            players.add(new Player(retrieveName(R.id.player2Name), ""));
-        }
-        if(!retrieveName(R.id.player3Name).equals("")) {
-
-            players.add(new Player(retrieveName(R.id.player3Name), ""));
-        }
-        if(!retrieveName(R.id.player4Name).equals("")) {
-
-            players.add(new Player(retrieveName(R.id.player4Name), ""));
-        }
-
-        for(int i = 0; i<numPlayers; i++){
+        for(int i = 0; i<names.size(); i++){
             players.add(new Player(names.get(i), ""));
         }
 

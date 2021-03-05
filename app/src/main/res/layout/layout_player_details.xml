@@ -23,107 +23,108 @@
         android:text="Add+"
         android:backgroundTint="@color/primary"
         android:textColor="@android:color/white"
+
         android:layout_toRightOf="@id/editText" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="394dp"
+        android:layout_height="516dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="95dp"
-        android:layout_marginEnd="217dp"
-        android:layout_marginRight="217dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
         android:divider="@drawable/ic_divider_32"
         android:orientation="vertical"
         android:padding="16dp"
         android:showDividers="middle">
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:textColorHint="@color/primary"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            app:placeholderText="Player 1"
-            app:placeholderTextColor="@color/text_placeholder">
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="@string/name"-->
+        <!--            android:textColorHint="@color/primary"-->
+        <!--            app:boxStrokeColor="@color/primary"-->
+        <!--            app:hintTextColor="@color/primary"-->
+        <!--            app:placeholderText="Player 1"-->
+        <!--            app:placeholderTextColor="@color/text_placeholder">-->
 
-            <EditText
-                android:id="@+id/player1Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@color/text_input"
-                android:inputType="text"
-                android:textColor="@color/black"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/player1Name"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:autofillHints=""-->
+        <!--                android:background="@color/text_input"-->
+        <!--                android:inputType="text"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                tools:ignore="LabelFor" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:textColorHint="@color/primary"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            app:placeholderText="Player 1"
-            app:placeholderTextColor="@color/text_placeholder">
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="@string/name"-->
+        <!--            android:textColorHint="@color/primary"-->
+        <!--            app:boxStrokeColor="@color/primary"-->
+        <!--            app:hintTextColor="@color/primary"-->
+        <!--            app:placeholderText="Player 1"-->
+        <!--            app:placeholderTextColor="@color/text_placeholder">-->
 
-            <EditText
-                android:id="@+id/player2Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@color/text_input"
-                android:inputType="text"
-                android:textColor="@color/black"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/player2Name"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:autofillHints=""-->
+        <!--                android:background="@color/text_input"-->
+        <!--                android:inputType="text"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                tools:ignore="LabelFor" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:textColorHint="@color/primary"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            app:placeholderText="Player 1"
-            app:placeholderTextColor="@color/text_placeholder">
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="@string/name"-->
+        <!--            android:textColorHint="@color/primary"-->
+        <!--            app:boxStrokeColor="@color/primary"-->
+        <!--            app:hintTextColor="@color/primary"-->
+        <!--            app:placeholderText="Player 1"-->
+        <!--            app:placeholderTextColor="@color/text_placeholder">-->
 
-            <EditText
-                android:id="@+id/player3Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@color/text_input"
-                android:inputType="text"
-                android:textColor="@color/black"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/player3Name"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:autofillHints=""-->
+        <!--                android:background="@color/text_input"-->
+        <!--                android:inputType="text"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                tools:ignore="LabelFor" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/name"
-            android:textColorHint="@color/primary"
-            app:boxStrokeColor="@color/primary"
-            app:hintTextColor="@color/primary"
-            app:placeholderText="Player 1"
-            app:placeholderTextColor="@color/text_placeholder">
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:hint="@string/name"-->
+        <!--            android:textColorHint="@color/primary"-->
+        <!--            app:boxStrokeColor="@color/primary"-->
+        <!--            app:hintTextColor="@color/primary"-->
+        <!--            app:placeholderText="Player 1"-->
+        <!--            app:placeholderTextColor="@color/text_placeholder">-->
 
-            <EditText
-                android:id="@+id/player4Name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:autofillHints=""
-                android:background="@color/text_input"
-                android:inputType="text"
-                android:textColor="@color/black"
-                tools:ignore="LabelFor" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!--            <EditText-->
+        <!--                android:id="@+id/player4Name"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:autofillHints=""-->
+        <!--                android:background="@color/text_input"-->
+        <!--                android:inputType="text"-->
+        <!--                android:textColor="@color/black"-->
+        <!--                tools:ignore="LabelFor" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
     </LinearLayout>
 
     <ImageButton
