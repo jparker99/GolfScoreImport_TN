@@ -10,27 +10,18 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
 public class EnterScore extends AppCompatActivity {
-    private enum ActionEnum{
-        hole,
-        player
-    }
-
     Game gameObject;
     Player currentPlayer;
     List<Player> players;
     ListIterator<Player> playerIterator;
-
     Stack<ActionEnum> actionHistory = new Stack<>();
     Stack<ListIterator<Player>> iteratorHistory = new Stack<>();
     Stack<Player> currPlayerHistory = new Stack<>();
-
     // Components
     TextView textHoleHeader;
     TextView displayPlayerName;
@@ -41,7 +32,6 @@ public class EnterScore extends AppCompatActivity {
     Button decrementScore;
     Button overviewButton;
     EditText strokesDisplay;
-
     String p1_hole_ind;
     String p2_hole_ind;
     String finish_game_txt;
@@ -115,13 +105,13 @@ public class EnterScore extends AppCompatActivity {
         if (currentPlayer == null) {
             currentPlayer = playerIterator.next();
         } else {
-           boolean t = true;
-           while(t){
-               Player tmp = playerIterator.next();
-               if(tmp.getName().equals(currentPlayer.getName())){
-                   t = false;
-               }
-           }
+            boolean t = true;
+            while (t) {
+                Player tmp = playerIterator.next();
+                if (tmp.getName().equals(currentPlayer.getName())) {
+                    t = false;
+                }
+            }
         }
         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         displayPlayerName.setText(currentPlayer.getName());
@@ -201,48 +191,54 @@ public class EnterScore extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBackPressed(){
-        if(actionHistory.empty()){
+    public void onBackPressed() {
+        if (actionHistory.empty()) {
             Game newGame = new Game();
             Intent i = new Intent(this, PlayerDetails.class);
             i.putExtra("gameObject", newGame);
             startActivity(i);
             return;
-        }
-        ActionEnum lastAction = actionHistory.pop();
-        switch(lastAction){
-            case hole:
-                if (gameObject.getCurrentHole() < 18) {
-                    gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
-                    textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-                    playerIterator = iteratorHistory.pop();
-                    currentPlayer = currPlayerHistory.pop();
+        } else {
+            ActionEnum lastAction = actionHistory.pop();
+            switch (lastAction) {
+                case hole:
+                    if (gameObject.getCurrentHole() < 18) {
+                        gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
+                        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+                        playerIterator = iteratorHistory.pop();
+                        currentPlayer = currPlayerHistory.pop();
+                        displayPlayerName.setText(currentPlayer.getName());
+                        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+                    } else {
+                        gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
+                        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+                        playerIterator = iteratorHistory.pop();
+                        currentPlayer = currPlayerHistory.pop();
+                        displayPlayerName.setText(currentPlayer.getName());
+                        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+                        exitGameButton.setText(exit_game_txt);
+                        nextHoleButton.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                case player:
+                    playerIterator.previous();
+                    if (!playerIterator.hasPrevious()) {
+                        playerIterator = players.listIterator(players.size() - 1);
+                        currentPlayer = playerIterator.next();
+                    } else {
+                        currentPlayer = playerIterator.previous();
+                        playerIterator.next();
+                    }
                     displayPlayerName.setText(currentPlayer.getName());
                     strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
-                } else {
-                    gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
-                    textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-                    playerIterator = iteratorHistory.pop();
-                    currentPlayer = currPlayerHistory.pop();
-                    displayPlayerName.setText(currentPlayer.getName());
-                    strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
-                    exitGameButton.setText(exit_game_txt);
-                    nextHoleButton.setVisibility(View.VISIBLE);
-                }
-                break;
-            case player:
-                playerIterator.previous();
-                if (!playerIterator.hasPrevious()) {
-                    playerIterator = players.listIterator(players.size()-1);
-                    currentPlayer = playerIterator.next();
-                } else {
-                    currentPlayer = playerIterator.previous();
-                    playerIterator.next();
-                }
-                displayPlayerName.setText(currentPlayer.getName());
-                strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
-                break;
+                    break;
+            }
         }
+    }
+
+    private enum ActionEnum {
+        hole,
+        player
     }
 
 }
