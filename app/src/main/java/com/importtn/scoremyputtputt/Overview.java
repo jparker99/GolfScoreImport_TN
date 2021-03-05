@@ -88,4 +88,8 @@ public class Overview extends AppCompatActivity {
         }
     }
 
+    public void onBackPressed(){
+        finishUp();
+    }
+
 }
