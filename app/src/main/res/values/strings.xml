@@ -50,4 +50,7 @@
     <string name="hole_18">Hole 18</string>
     <string name="Txt">CLOSE</string>
     <string name="save_changesTxt">Save Changes</string>
+    <string name="removeTxt">Remove</string>
+    <string name="enter_nameTxt">Enter Name</string>
+    <string name="add_player">+ Add Player</string>
 </resources>

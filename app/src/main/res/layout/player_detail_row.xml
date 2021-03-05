@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:layout_margin="8dp"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/newNameHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:backgroundTint="@color/primary"
+        android:textColorHint="@color/text_placeholder"
+        android:ems="10"
+        android:hint="@string/enter_nameTxt"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/removeRowButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/btn_rounded_primary"
+        app:backgroundTint="@color/black"
+        android:minHeight="0dp"
+        android:text="@string/removeTxt"
+        android:textColor="@color/white" />
+</LinearLayout>
