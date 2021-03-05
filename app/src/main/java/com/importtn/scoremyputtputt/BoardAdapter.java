@@ -1,7 +1,6 @@
 package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -11,14 +10,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Collections;
 import java.util.List;
-
-import static android.app.PendingIntent.getActivity;
-import static java.security.AccessController.getContext;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> {
     private final List<Player> players;
