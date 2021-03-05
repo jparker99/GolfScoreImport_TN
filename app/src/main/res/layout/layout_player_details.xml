@@ -1,141 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:padding="16dp">
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="219dp"
-        android:layout_height="74dp"
-        android:hint="add more players here!"
-        android:textColorHint="@color/primary"
-        />
+    android:background="@color/background">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addPlayerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/editText"
-        android:text="Add+"
-        android:backgroundTint="@color/primary"
-        android:textColor="@android:color/white"
+        android:background="@drawable/btn_rounded_primary"
+        app:backgroundTint="@color/primary"
+        android:textColor="@color/white"
+        android:text="@string/add_player"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4" />
 
-        android:layout_toRightOf="@id/editText" />
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="394dp"
-        android:layout_height="516dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
-        android:divider="@drawable/ic_divider_32"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:showDividers="middle">
-
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="@string/name"-->
-        <!--            android:textColorHint="@color/primary"-->
-        <!--            app:boxStrokeColor="@color/primary"-->
-        <!--            app:hintTextColor="@color/primary"-->
-        <!--            app:placeholderText="Player 1"-->
-        <!--            app:placeholderTextColor="@color/text_placeholder">-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/player1Name"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:autofillHints=""-->
-        <!--                android:background="@color/text_input"-->
-        <!--                android:inputType="text"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                tools:ignore="LabelFor" />-->
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="@string/name"-->
-        <!--            android:textColorHint="@color/primary"-->
-        <!--            app:boxStrokeColor="@color/primary"-->
-        <!--            app:hintTextColor="@color/primary"-->
-        <!--            app:placeholderText="Player 1"-->
-        <!--            app:placeholderTextColor="@color/text_placeholder">-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/player2Name"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:autofillHints=""-->
-        <!--                android:background="@color/text_input"-->
-        <!--                android:inputType="text"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                tools:ignore="LabelFor" />-->
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="@string/name"-->
-        <!--            android:textColorHint="@color/primary"-->
-        <!--            app:boxStrokeColor="@color/primary"-->
-        <!--            app:hintTextColor="@color/primary"-->
-        <!--            app:placeholderText="Player 1"-->
-        <!--            app:placeholderTextColor="@color/text_placeholder">-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/player3Name"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:autofillHints=""-->
-        <!--                android:background="@color/text_input"-->
-        <!--                android:inputType="text"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                tools:ignore="LabelFor" />-->
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-        <!--        <com.google.android.material.textfield.TextInputLayout-->
-        <!--            android:layout_width="200dp"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:hint="@string/name"-->
-        <!--            android:textColorHint="@color/primary"-->
-        <!--            app:boxStrokeColor="@color/primary"-->
-        <!--            app:hintTextColor="@color/primary"-->
-        <!--            app:placeholderText="Player 1"-->
-        <!--            app:placeholderTextColor="@color/text_placeholder">-->
-
-        <!--            <EditText-->
-        <!--                android:id="@+id/player4Name"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:autofillHints=""-->
-        <!--                android:background="@color/text_input"-->
-        <!--                android:inputType="text"-->
-        <!--                android:textColor="@color/black"-->
-        <!--                tools:ignore="LabelFor" />-->
-        <!--        </com.google.android.material.textfield.TextInputLayout>-->
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/listPlayerDetailRows"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
     <ImageButton
-        android:id="@+id/placeHolderStGameButton"
+        android:id="@+id/finalizePlayers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:background="@color/background"
-        android:contentDescription="@string/confirm"
+        android:contentDescription="Fplayerbutton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4"
         app:srcCompat="@drawable/ic_confirm_check_circle_64" />
-</RelativeLayout>
-
+</androidx.constraintlayout.widget.ConstraintLayout>
