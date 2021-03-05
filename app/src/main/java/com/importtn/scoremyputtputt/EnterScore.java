@@ -207,6 +207,7 @@ public class EnterScore extends AppCompatActivity {
             Intent i = new Intent(this, PlayerDetails.class);
             i.putExtra("gameObject", newGame);
             startActivity(i);
+            return;
         }
         ActionEnum lastAction = actionHistory.pop();
         switch(lastAction){
