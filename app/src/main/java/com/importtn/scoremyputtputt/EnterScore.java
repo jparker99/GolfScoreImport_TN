@@ -166,7 +166,6 @@ public class EnterScore extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void nextPlayer() {
-        System.out.println(currentPlayer.getName());
         if (!playerIterator.hasNext()) {
             playerIterator = players.listIterator();
         }
