@@ -115,11 +115,7 @@ public class PlayerDetails extends AppCompatActivity {
 
         Intent i = new Intent(this, EnterScore.class);
         i.putExtra("gameObject", gameObject);
-        startActivity(i);
-    }
-    @Override
-    public void onBackPressed(){
-        Intent i = new Intent(this, Startup.class);
+        finishAffinity();
         startActivity(i);
     }
 

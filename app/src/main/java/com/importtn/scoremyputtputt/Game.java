@@ -19,15 +19,6 @@ public class Game implements Serializable {
         return players;
     }
 
-    public Player getPlayer(String name){
-        for(Player player: players){
-            if(player.getName().equals(name)){
-                return player;
-            }
-        }
-        return null;
-    }
-
     public void setPlayers(List<Player> players) {
         this.players = players;
     }

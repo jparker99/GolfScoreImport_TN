@@ -27,9 +27,5 @@ public class Startup extends AppCompatActivity {
         i.putExtra("gameObject", newGame);
         startActivity(i);
     }
-    @Override
-    public void onBackPressed(){
-        finishAffinity();
-    }
 
 }

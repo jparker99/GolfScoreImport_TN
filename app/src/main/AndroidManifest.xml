@@ -34,11 +34,6 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.ScoreMyPuttPutt.NoActionBar">
         </activity>
-        <activity
-            android:name=".Overview"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ScoreMyPuttPutt.NoActionBar">
-        </activity>
     </application>
 
 </manifest>
