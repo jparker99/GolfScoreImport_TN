@@ -22,7 +22,6 @@ import static java.security.AccessController.getContext;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> {
     private final List<Player> players;
-    Context context;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView playerNameThing;
@@ -55,8 +54,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         }
     }
 
-    public BoardAdapter(Game gameObject, Context context) {
-        this.context = context;
+    public BoardAdapter(Game gameObject) {
         this.players = gameObject.getPlayers();
         Collections.sort(players);
     }

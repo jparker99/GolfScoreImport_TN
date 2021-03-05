@@ -46,7 +46,7 @@ public class EndScreen extends AppCompatActivity {
         playerWinner.setPadding(0, 64, 0, 128);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.listPlayerObjects);
-        mAdapter = new BoardAdapter(gameObject, getApplicationContext());
+        mAdapter = new BoardAdapter(gameObject);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
