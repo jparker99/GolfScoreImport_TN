@@ -1,6 +1,9 @@
 package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,10 +24,21 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
         public ViewHolder(View view) {
             super(view);
-            playerNameThing = (TextView) view.findViewById(R.id.playerNameThing);
-            playerScoreThing = (TextView) view.findViewById(R.id.playerScoreThing);
-        }
 
+            playerNameThing = (TextView) view.findViewById(R.id.playerNameThing);
+            playerNameThing.setTextColor(Color.BLACK);
+            playerNameThing.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+            playerNameThing.setGravity(Gravity.CENTER);
+            playerNameThing.setPadding(8, 24, 8, 24);
+            playerNameThing.setBackgroundResource(R.drawable.customborder);
+
+            playerScoreThing = (TextView) view.findViewById(R.id.playerScoreThing);
+            playerScoreThing.setTextColor(Color.BLACK);
+            playerScoreThing.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+            playerScoreThing.setGravity(Gravity.CENTER);
+            playerScoreThing.setPadding(8, 24, 8, 24);
+            playerScoreThing.setBackgroundResource(R.drawable.customborder);
+        }
 
         public TextView getPlayerNameThing() {
             return playerNameThing;

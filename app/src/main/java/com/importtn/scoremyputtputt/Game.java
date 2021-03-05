@@ -2,6 +2,7 @@ package com.importtn.scoremyputtputt;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Game implements Serializable {
@@ -34,6 +35,10 @@ public class Game implements Serializable {
 
     public int getCurrentHole() {
         return currentHole;
+    }
+
+    public Player getWinner() {
+        return Collections.min(players);
     }
 
     public void setCurrentHole(int currentHole) {
