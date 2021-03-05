@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp"
-    android:background="@color/white"
+    android:background="@color/background"
     tools:context=".EnterScore">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +17,8 @@
             android:id="@+id/strokesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:textSize="24sp"
             android:gravity="center"
             android:text="@string/strokesTxt"
             android:textColor="@color/black"
@@ -27,7 +29,7 @@
 
         <LinearLayout
             android:id="@+id/tempPlayerCount"
-            android:layout_width="120dp"
+            android:layout_width="180dp"
             android:layout_height="40dp"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -40,20 +42,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/secondary"
                 android:gravity="center"
                 android:text="@string/minusTxt"
-                android:textColor="@color/black"
-                app:backgroundTint="#FFFFFF" />
+                android:textColor="@color/white"
+                app:backgroundTint="@color/secondary" />
 
             <EditText
                 android:id="@+id/tempNumberPlayers"
-                android:layout_width="40dp"
+                android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:autofillHints="Enter Strokes."
+                android:background="@color/white"
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="number"
                 android:text="@string/zeroTxt"
+                android:textColor="@color/black"
                 tools:ignore="LabelFor" />
 
             <Button
@@ -61,10 +66,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/secondary"
                 android:gravity="center"
                 android:text="@string/plusTxt"
-                android:textColor="@color/black"
-                app:backgroundTint="#FFFFFF" />
+                android:textColor="@color/white"
+                app:backgroundTint="@color/secondary" />
         </LinearLayout>
 
         <TextView
@@ -74,6 +80,7 @@
             android:ems="10"
             android:gravity="center"
             android:text="@string/loadingTxt"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -88,6 +95,9 @@
             android:id="@+id/nextPlayerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
+            app:backgroundTint="@color/primary"
+            android:textColor="@color/white"
             android:text="@string/next_playerTxt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,6 +110,9 @@
             android:id="@+id/nextHoleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
+            app:backgroundTint="@color/primary"
+            android:textColor="@color/white"
             android:text="@string/next_holeTxt"
             app:layout_constraintBottom_toTopOf="@+id/nextPlayerButton"
             app:layout_constraintEnd_toEndOf="parent"
@@ -112,6 +125,9 @@
             android:id="@+id/exitGameButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
+            app:backgroundTint="@color/primary"
+            android:textColor="@color/white"
             android:text="@string/exit_gameTxt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
