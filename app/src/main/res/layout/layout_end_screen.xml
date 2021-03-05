@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:padding="32dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/player_winner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/loadingTxt" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="131dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_below="@id/player_winner">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,20 +36,39 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/name" />
+                    app:backgroundTint="@color/primary_dark"
+                    android:background="@drawable/customborder"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/player" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/score" />
+                    app:backgroundTint="@color/primary_dark"
+                    android:background="@drawable/customborder"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/total_score" />
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listPlayerObjects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/customborder"
+                android:foregroundTint="@color/black"
+                android:layout_gravity="center"
                 tools:itemCount="0" />
         </LinearLayout>
     </ScrollView>
@@ -54,11 +77,11 @@
         android:id="@+id/finishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FINISH"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        android:background="@drawable/btn_rounded_primary"
+        app:backgroundTint="@color/primary"
+        android:textColor="@color/white"
+        android:text="@string/finish"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

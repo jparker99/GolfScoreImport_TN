@@ -49,5 +49,8 @@
     <string name="hole_17">Hole 17</string>
     <string name="hole_18">Hole 18</string>
     <string name="Txt">CLOSE</string>
+    <string name="finish">Finish</string>
+    <string name="player">Player</string>
+    <string name="total_score">Total Score</string>
     <string name="save_changesTxt">Save Changes</string>
 </resources>
