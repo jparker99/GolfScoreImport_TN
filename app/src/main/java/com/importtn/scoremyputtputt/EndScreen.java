@@ -42,4 +42,8 @@ public class EndScreen extends AppCompatActivity {
         Intent i = new Intent(this, Startup.class);
         startActivity(i);
     }
+    @Override
+    public void onBackPressed(){
+        finishUp();
+    }
 }
