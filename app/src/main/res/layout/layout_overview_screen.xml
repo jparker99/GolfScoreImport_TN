@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_rounded_primary"
         android:text="@string/save_changesTxt"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -21,7 +24,10 @@
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/btn_rounded_primary"
         android:text="@string/Txt"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/secondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
@@ -45,7 +51,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/customborder"
                 android:orientation="vertical">
@@ -53,136 +59,173 @@
                 <TextView
                     android:id="@+id/strokesLabelTable"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/customborder"
+                    android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/strokesTxt" />
+                    android:text="@string/strokesTxt"
+                    android:textColor="@color/primary_dark" />
 
                 <TextView
                     android:id="@+id/hole1View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_1" />
+                    android:text="@string/hole_1"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole2View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_2" />
+                    android:text="@string/hole_2"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole3View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_3" />
+                    android:text="@string/hole_3"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole4View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_4" />
+                    android:text="@string/hole_4"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole5View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_5" />
+                    android:text="@string/hole_5"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole6View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_6" />
+                    android:text="@string/hole_6"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole7View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_7" />
+                    android:text="@string/hole_7"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole8View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_8" />
+                    android:text="@string/hole_8"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole9View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_9" />
+                    android:text="@string/hole_9"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole10View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_10" />
+                    android:text="@string/hole_10"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole11View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_11" />
+                    android:text="@string/hole_11"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole12View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_12" />
+                    android:text="@string/hole_12"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole13View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_13" />
+                    android:text="@string/hole_13"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole14View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_14" />
+                    android:text="@string/hole_14"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole15View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_15" />
+                    android:text="@string/hole_15"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole16View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_16" />
+                    android:text="@string/hole_16"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole17View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_17" />
+                    android:text="@string/hole_17"
+                    android:textColor="@color/white" />
 
                 <TextView
                     android:id="@+id/hole18View"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:background="@color/primary_dark"
                     android:gravity="center"
-                    android:text="@string/hole_18" />
+                    android:text="@string/hole_18"
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <HorizontalScrollView
