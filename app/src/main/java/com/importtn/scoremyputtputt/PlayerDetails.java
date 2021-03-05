@@ -38,21 +38,20 @@ public class PlayerDetails extends AppCompatActivity {
 
     }
 
-    private String retrieveName(int id, int counter) {
+    private String retrieveName(int id) {
         EditText editText = findViewById((id));
 
-        String name = editText.getText().toString();
+        System.out.println(editText.getText().toString());
 
-        return name.isEmpty() ? "Player " + counter : name;
+        return editText.getText().toString();
     }
 
     private void finalizePlayers(){
         //Placeholder method, will need to have player names and icons later.
-        int counter = 1;
-        players.add(new Player(retrieveName(R.id.player1Name, counter++), ""));
-        players.add(new Player(retrieveName(R.id.player2Name, counter++), ""));
-        players.add(new Player(retrieveName(R.id.player3Name, counter++), ""));
-        players.add(new Player(retrieveName(R.id.player4Name, counter), ""));
+        players.add(new Player(retrieveName(R.id.player1Name), ""));
+        players.add(new Player(retrieveName(R.id.player2Name), ""));
+        players.add(new Player(retrieveName(R.id.player3Name), ""));
+        players.add(new Player(retrieveName(R.id.player4Name), ""));
 
         gameObject.setPlayers(players);
 
