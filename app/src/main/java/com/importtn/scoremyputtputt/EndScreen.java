@@ -38,7 +38,7 @@ public class EndScreen extends AppCompatActivity {
         playerWinner = (TextView) findViewById(R.id.player_winner);
         String winnerText = "✨ " + gameObject.getWinner().getName() + " wins the game! ✨";
         playerWinner.setText(winnerText);
-        playerWinner.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 24);
+        playerWinner.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 22);
         playerWinner.setTextColor(Color.BLACK);
         playerWinner.setGravity(Gravity.CENTER);
         playerWinner.setPadding(0, 64, 0, 128);

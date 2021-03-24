@@ -2,6 +2,7 @@ package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -25,7 +26,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         public ViewHolder(View view) {
             super(view);
 
+            Typeface typeface = Typeface.createFromAsset(itemView.getContext().getAssets(), "fonts/aldrich.ttf");
+
             playerNameThing = (TextView) view.findViewById(R.id.playerNameThing);
+            playerNameThing.setTypeface(typeface);
             playerNameThing.setTextColor(Color.BLACK);
             playerNameThing.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             playerNameThing.setGravity(Gravity.CENTER);
@@ -33,6 +37,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
             playerNameThing.setBackgroundResource(R.drawable.customborder);
 
             playerScoreThing = (TextView) view.findViewById(R.id.playerScoreThing);
+            playerScoreThing.setTypeface(typeface);
             playerScoreThing.setTextColor(Color.BLACK);
             playerScoreThing.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             playerScoreThing.setGravity(Gravity.CENTER);
