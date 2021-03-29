@@ -8,10 +8,14 @@
     android:background="@color/background"
     tools:context=".EnterScore">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
 
         <TextView
             android:id="@+id/strokesLabel"
@@ -72,6 +76,8 @@
                 android:text="@string/plusTxt" />
         </LinearLayout>
 
+
+
         <TextView
             android:id="@+id/textHoleHeader"
             android:layout_width="wrap_content"
@@ -90,7 +96,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.025" />
 
-        <Button
+        <ImageButton
             android:id="@+id/nextPlayerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,9 +107,32 @@
             app:layout_constraintHorizontal_bias="0.901"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.974" />
+            app:layout_constraintVertical_bias="0.974"
+            android:src="@drawable/player_plus"
+            />
 
-        <Button
+        <ImageButton
+            android:id="@+id/prevPlayerButton"
+            style="@style/primaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:src="@drawable/player_minus"
+            app:layout_constraintRight_toLeftOf="@id/nextPlayerButton"
+            app:layout_constraintTop_toTopOf="@id/nextPlayerButton" />
+
+        <ImageButton
+            android:id="@+id/prevHoleButton"
+            style="@style/primaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+
+            android:src="@drawable/hole_minus"
+            app:layout_constraintRight_toLeftOf="@id/nextHoleButton"
+            app:layout_constraintTop_toTopOf="@id/nextHoleButton" />
+
+        <ImageButton
             android:id="@+id/nextHoleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +144,11 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/nextPlayerButton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="1.0"
+            android:src="@drawable/hole_plus"
+            />
+
+
 
         <Button
             android:id="@+id/exitGameButton"

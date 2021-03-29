@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,8 +26,8 @@ public class EnterScore extends AppCompatActivity {
     // Components
     TextView textHoleHeader;
     TextView displayPlayerName;
-    Button nextHoleButton;
-    Button nextPlayerButton;
+    ImageButton nextHoleButton;
+    ImageButton nextPlayerButton;
     Button exitGameButton;
     Button incrementScore;
     Button decrementScore;
@@ -37,7 +38,7 @@ public class EnterScore extends AppCompatActivity {
     String finish_game_txt;
     String exit_game_txt;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
