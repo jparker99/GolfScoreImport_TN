@@ -12,7 +12,7 @@
         <activity
             android:name=".Startup"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ScoreMyPuttPutt">
+            android:theme="@style/Theme.ScoreMyPuttPutt.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
