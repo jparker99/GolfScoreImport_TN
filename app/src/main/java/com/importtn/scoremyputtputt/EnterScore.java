@@ -25,6 +25,7 @@ public class EnterScore extends AppCompatActivity {
     Stack<Player> currPlayerHistory = new Stack<>();
     // Components
     TextView textHoleHeader;
+    TextView totalscore;
     TextView displayPlayerName;
     ImageButton nextHoleButton;
     ImageButton nextPlayerButton;
@@ -61,6 +62,7 @@ public class EnterScore extends AppCompatActivity {
         overviewButton = findViewById(R.id.overviewButton);
        ImageButton prevHoleButton = findViewById(R.id.prevHoleButton);
         ImageButton prevPlayerButton = findViewById(R.id.prevPlayerButton);
+        totalscore = findViewById(R.id.totalscore);
 
 
         prevHoleButton.setOnClickListener(new View.OnClickListener(){
@@ -131,7 +133,9 @@ public class EnterScore extends AppCompatActivity {
         }
         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         displayPlayerName.setText(currentPlayer.getName());
+        totalscore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+
 
 
     }

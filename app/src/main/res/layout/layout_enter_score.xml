@@ -9,23 +9,21 @@
     tools:context=".EnterScore">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-
         <TextView
             android:id="@+id/strokesLabel"
+            style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:textSize="24sp"
             android:gravity="center"
             android:text="@string/strokesTxt"
-            style="@style/textView"
+            android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/tempPlayerCount"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -43,10 +41,10 @@
 
             <Button
                 android:id="@+id/tempReducePlayers"
+                style="@style/secondaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                style="@style/secondaryButton"
                 android:background="@drawable/btn_rounded_decrement"
                 android:gravity="center"
                 android:text="@string/minusTxt" />
@@ -56,9 +54,9 @@
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:autofillHints="Enter Strokes."
-                android:fontFamily="@font/aldrich"
                 android:background="@color/white"
                 android:ems="10"
+                android:fontFamily="@font/aldrich"
                 android:gravity="center"
                 android:inputType="number"
                 android:text="@string/zeroTxt"
@@ -67,28 +65,27 @@
 
             <Button
                 android:id="@+id/tempIncreasePlayers"
+                style="@style/secondaryButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                style="@style/secondaryButton"
                 android:background="@drawable/btn_rounded_increment"
                 android:gravity="center"
                 android:text="@string/plusTxt" />
         </LinearLayout>
 
 
-
         <TextView
             android:id="@+id/textHoleHeader"
+            style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:gravity="center"
-            style="@style/textView"
             android:text="@string/loadingTxt"
-            android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
@@ -98,18 +95,17 @@
 
         <ImageButton
             android:id="@+id/nextPlayerButton"
+            style="@style/primaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/primaryButton"
+            android:src="@drawable/player_plus"
             android:text="@string/next_playerTxt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.901"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.974"
-            android:src="@drawable/player_plus"
-            />
+            app:layout_constraintVertical_bias="0.974" />
 
         <ImageButton
             android:id="@+id/prevPlayerButton"
@@ -134,27 +130,25 @@
 
         <ImageButton
             android:id="@+id/nextHoleButton"
+            style="@style/primaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/primaryButton"
             android:layout_marginBottom="8dp"
+            android:src="@drawable/hole_plus"
             android:text="@string/next_holeTxt"
             app:layout_constraintBottom_toTopOf="@+id/nextPlayerButton"
             app:layout_constraintEnd_toEndOf="@+id/nextPlayerButton"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/nextPlayerButton"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            android:src="@drawable/hole_plus"
-            />
-
+            app:layout_constraintVertical_bias="1.0" />
 
 
         <Button
             android:id="@+id/exitGameButton"
+            style="@style/blackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/blackButton"
             android:text="@string/exit_gameTxt"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,23 +159,45 @@
 
         <TextView
             android:id="@+id/playerNameDisplay"
+            style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            style="@style/textView"
             android:text="@string/loadingTxt"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/strokesLabel"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textHoleHeader" />
+            app:layout_constraintTop_toBottomOf="@+id/textHoleHeader"
+            app:layout_constraintVertical_bias="0.396" />
+
+        <TextView
+            android:id="@+id/totalscore"
+            style="@style/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="113dp"
+            android:layout_marginLeft="113dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginRight="113dp"
+            android:gravity="center"
+            android:text="@string/loadingTxt"
+
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@id/strokesLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerNameDisplay" />
 
         <Button
             android:id="@+id/overviewButton"
+            style="@style/primaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/primaryButton"
             android:layout_marginBottom="8dp"
             android:text="@string/overviewTxt"
             app:layout_constraintBottom_toTopOf="@+id/exitGameButton"
