@@ -62,6 +62,12 @@ public class EnterScore extends AppCompatActivity {
        ImageButton prevHoleButton = findViewById(R.id.prevHoleButton);
         ImageButton prevPlayerButton = findViewById(R.id.prevPlayerButton);
 
+
+        prevHoleButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                prevHole();
+            }
+        });
         prevPlayerButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 prevPlayer();
@@ -149,6 +155,23 @@ public class EnterScore extends AppCompatActivity {
     }
 
     @SuppressLint("SetTextI18n")
+    private void prevHole() {
+        if (gameObject.getCurrentHole() >1) {
+            gameObject.setCurrentHole(gameObject.getCurrentHole() -1);
+            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            iteratorHistory.push(playerIterator);
+            currPlayerHistory.push(currentPlayer);
+            playerIterator = players.listIterator();
+            currentPlayer = playerIterator.next();
+            displayPlayerName.setText(currentPlayer.getName());
+            strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+        }
+
+        actionHistory.push(ActionEnum.hole);
+
+    }
+
+    @SuppressLint("SetTextI18n")
     private void nextHole() {
         if (gameObject.getCurrentHole() < 17) {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
@@ -188,7 +211,7 @@ public class EnterScore extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void prevPlayer() {
-        //playerIterator.previous();
+        playerIterator=players.listIterator();
         if (!playerIterator.hasPrevious()) {
             playerIterator = players.listIterator(players.size() - 1);
             currentPlayer = playerIterator.next();
