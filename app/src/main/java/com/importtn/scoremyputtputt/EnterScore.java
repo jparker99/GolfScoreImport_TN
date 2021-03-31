@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +25,10 @@ public class EnterScore extends AppCompatActivity {
     Stack<Player> currPlayerHistory = new Stack<>();
     // Components
     TextView textHoleHeader;
+    TextView totalScore;
     TextView displayPlayerName;
-    Button nextHoleButton;
-    Button nextPlayerButton;
+    ImageButton nextHoleButton;
+    ImageButton nextPlayerButton;
     Button exitGameButton;
     Button incrementScore;
     Button decrementScore;
@@ -37,7 +39,7 @@ public class EnterScore extends AppCompatActivity {
     String finish_game_txt;
     String exit_game_txt;
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -58,6 +60,22 @@ public class EnterScore extends AppCompatActivity {
         decrementScore = findViewById(R.id.tempReducePlayers);
         strokesDisplay = findViewById(R.id.tempNumberPlayers);
         overviewButton = findViewById(R.id.overviewButton);
+        ImageButton prevHoleButton = findViewById(R.id.prevHoleButton);
+        ImageButton prevPlayerButton = findViewById(R.id.prevPlayerButton);
+        totalScore = findViewById(R.id.totalscore);
+
+
+        prevHoleButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                prevHole();
+            }
+        });
+        prevPlayerButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                prevPlayer();
+            }
+        });
+
 
         nextHoleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -115,7 +133,9 @@ public class EnterScore extends AppCompatActivity {
         }
         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         displayPlayerName.setText(currentPlayer.getName());
+        totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+
 
 
     }
@@ -125,6 +145,7 @@ public class EnterScore extends AppCompatActivity {
         int[] scores = currentPlayer.getScores();
         scores[gameObject.getCurrentHole() - 1]++;
         currentPlayer.setScores(scores);
+        totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
 
@@ -134,8 +155,32 @@ public class EnterScore extends AppCompatActivity {
         if (scores[gameObject.getCurrentHole() - 1] > 0) {
             scores[gameObject.getCurrentHole() - 1]--;
             currentPlayer.setScores(scores);
+            totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void prevHole() {
+        if (gameObject.getCurrentHole() >1) {
+            gameObject.setCurrentHole(gameObject.getCurrentHole() -1);
+            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            iteratorHistory.push(playerIterator);
+            currPlayerHistory.push(currentPlayer);
+            playerIterator = players.listIterator();
+            currentPlayer = playerIterator.next();
+            displayPlayerName.setText(currentPlayer.getName());
+            totalScore.setText("Total: "+ currentPlayer.getTotalScore());
+            strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+
+            if (gameObject.getCurrentHole() == 17) {
+                exitGameButton.setText(exit_game_txt);
+                nextHoleButton.setVisibility(View.VISIBLE);
+            }
+        }
+
+        actionHistory.push(ActionEnum.hole);
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -148,6 +193,7 @@ public class EnterScore extends AppCompatActivity {
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
             displayPlayerName.setText(currentPlayer.getName());
+            totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         } else {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
@@ -157,12 +203,14 @@ public class EnterScore extends AppCompatActivity {
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
             displayPlayerName.setText(currentPlayer.getName());
+            totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
             exitGameButton.setText(finish_game_txt);
             nextHoleButton.setVisibility(View.INVISIBLE);
         }
         actionHistory.push(ActionEnum.hole);
     }
+
 
     @SuppressLint("SetTextI18n")
     private void nextPlayer() {
@@ -171,8 +219,24 @@ public class EnterScore extends AppCompatActivity {
         }
         currentPlayer = playerIterator.next();
         displayPlayerName.setText(currentPlayer.getName());
+        totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         actionHistory.push(ActionEnum.player);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void prevPlayer() {
+        playerIterator.previous();
+        if (!playerIterator.hasPrevious()) {
+            playerIterator = players.listIterator(players.size() - 1);
+            currentPlayer = playerIterator.next();
+        } else {
+            currentPlayer = playerIterator.previous();
+            playerIterator.next();
+        }
+        displayPlayerName.setText(currentPlayer.getName());
+        totalScore.setText("Total: "+ currentPlayer.getTotalScore());
+        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
 
     private void exitGame() {
@@ -202,34 +266,21 @@ public class EnterScore extends AppCompatActivity {
             switch (lastAction) {
                 case hole:
                     if (gameObject.getCurrentHole() < 18) {
-                        gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
-                        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-                        playerIterator = iteratorHistory.pop();
-                        currentPlayer = currPlayerHistory.pop();
-                        displayPlayerName.setText(currentPlayer.getName());
-                        strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+                        prevHole();
                     } else {
                         gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
                         textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
                         playerIterator = iteratorHistory.pop();
                         currentPlayer = currPlayerHistory.pop();
                         displayPlayerName.setText(currentPlayer.getName());
+                        totalScore.setText("Total: "+ currentPlayer.getTotalScore());
                         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
                         exitGameButton.setText(exit_game_txt);
                         nextHoleButton.setVisibility(View.VISIBLE);
                     }
                     break;
                 case player:
-                    playerIterator.previous();
-                    if (!playerIterator.hasPrevious()) {
-                        playerIterator = players.listIterator(players.size() - 1);
-                        currentPlayer = playerIterator.next();
-                    } else {
-                        currentPlayer = playerIterator.previous();
-                        playerIterator.next();
-                    }
-                    displayPlayerName.setText(currentPlayer.getName());
-                    strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
+                    prevPlayer();
                     break;
             }
         }
