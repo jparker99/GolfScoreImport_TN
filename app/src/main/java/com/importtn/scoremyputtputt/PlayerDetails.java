@@ -3,12 +3,12 @@ package com.importtn.scoremyputtputt;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,12 +60,22 @@ public class PlayerDetails extends AppCompatActivity {
     }
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "ClickableViewAccessibility"})
     private void addPlayerItem() {
         View tmp = getLayoutInflater().inflate(R.layout.player_detail_row, listPlayerItems, false);
 
-        TextView playerText = tmp.findViewById(R.id.newNameHolder);
+        EditText playerText = tmp.findViewById(R.id.newNameHolder);
+
         playerText.setText("Player " + (playersAdded + 1));
+
+        playerText.setOnTouchListener((v, event) -> {
+            if (MotionEvent.ACTION_UP == event.getAction()) {
+                if (playerText.getText().toString().startsWith("Player")) {
+                    playerText.setText("");
+                }
+            }
+            return false;
+        });
 
         Button buttonRemove = (Button) tmp.findViewById(R.id.removeRowButton);
 
