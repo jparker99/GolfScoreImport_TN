@@ -1,6 +1,7 @@
 package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.util.TypedValue;
@@ -8,6 +9,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +37,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
             playerNameThing.setGravity(Gravity.CENTER);
             playerNameThing.setPadding(8, 24, 8, 24);
             playerNameThing.setBackgroundResource(R.drawable.customborder);
+            playerNameThing.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f));
 
             playerScoreThing = (TextView) view.findViewById(R.id.playerScoreThing);
             playerScoreThing.setTypeface(typeface);
@@ -43,6 +46,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
             playerScoreThing.setGravity(Gravity.CENTER);
             playerScoreThing.setPadding(8, 24, 8, 24);
             playerScoreThing.setBackgroundResource(R.drawable.customborder);
+            playerScoreThing.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.MATCH_PARENT, 1.0f));
         }
 
         public TextView getPlayerNameThing() {
