@@ -94,6 +94,12 @@ public class PlayerDetails extends AppCompatActivity {
 
     private void finalizePlayers() {
 
+        if(items.size() < 1){
+            Toast toast = Toast.makeText(this, "Need at least one player!", Toast.LENGTH_SHORT);
+            toast.show();
+            return;
+        }
+
         for (View item : items) {
             EditText nameH = item.findViewById(R.id.newNameHolder);
             String name = nameH.getText().toString();
