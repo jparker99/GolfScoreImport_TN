@@ -26,8 +26,8 @@ public class EnterScore extends AppCompatActivity {
     Stack<ListIterator<Player>> iteratorHistory = new Stack<>();
     Stack<Player> currPlayerHistory = new Stack<>();
     // Components
-    TextView textHoleHeader;
     TextView totalScore;
+    TextSwitcher holeSwitcher;
     TextSwitcher nameSwitcher;
     ImageButton nextHoleButton;
     ImageButton nextPlayerButton;
@@ -54,7 +54,9 @@ public class EnterScore extends AppCompatActivity {
 
         Context context = getApplicationContext();
 
-        textHoleHeader = findViewById(R.id.textHoleHeader);
+        holeSwitcher = findViewById(R.id.holeSwitcher);
+        holeSwitcher.setInAnimation(context, android.R.anim.slide_in_left);
+        holeSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
         nameSwitcher = findViewById(R.id.nameSwitcher);
         nameSwitcher.setInAnimation(context, android.R.anim.slide_in_left);
         nameSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
@@ -136,8 +138,8 @@ public class EnterScore extends AppCompatActivity {
                 }
             }
         }
-        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-        nameSwitcher.setCurrentText(currentPlayer.getName());
+        holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+        nameSwitcher.setText(currentPlayer.getName());
         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
@@ -166,7 +168,7 @@ public class EnterScore extends AppCompatActivity {
     private void prevHole() {
         if (gameObject.getCurrentHole() >1) {
             gameObject.setCurrentHole(gameObject.getCurrentHole() -1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
@@ -189,7 +191,7 @@ public class EnterScore extends AppCompatActivity {
     private void nextHole() {
         if (gameObject.getCurrentHole() < 17) {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
@@ -199,7 +201,7 @@ public class EnterScore extends AppCompatActivity {
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         } else {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
@@ -271,7 +273,7 @@ public class EnterScore extends AppCompatActivity {
                         prevHole();
                     } else {
                         gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
-                        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+                        holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
                         playerIterator = iteratorHistory.pop();
                         currentPlayer = currPlayerHistory.pop();
                         nameSwitcher.setText(currentPlayer.getName());
