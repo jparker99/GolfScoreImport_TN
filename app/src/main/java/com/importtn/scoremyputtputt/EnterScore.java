@@ -180,7 +180,9 @@ public class EnterScore extends AppCompatActivity {
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            nameSwitcher.setText(currentPlayer.getName());
+            if (players.size() > 1) {
+                nameSwitcher.setText(currentPlayer.getName());
+            }
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
 
@@ -203,7 +205,9 @@ public class EnterScore extends AppCompatActivity {
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            nameSwitcher.setText(currentPlayer.getName());
+            if (players.size() > 1) {
+                nameSwitcher.setText(currentPlayer.getName());
+            }
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         } else {
@@ -213,7 +217,9 @@ public class EnterScore extends AppCompatActivity {
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            nameSwitcher.setText(currentPlayer.getName());
+            if (players.size() > 1) {
+                nameSwitcher.setText(currentPlayer.getName());
+            }
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
             exitGameButton.setText(finish_game_txt);
