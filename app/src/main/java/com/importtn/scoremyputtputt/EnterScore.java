@@ -1,12 +1,14 @@
 package com.importtn.scoremyputtputt;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextSwitcher;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,9 +26,9 @@ public class EnterScore extends AppCompatActivity {
     Stack<ListIterator<Player>> iteratorHistory = new Stack<>();
     Stack<Player> currPlayerHistory = new Stack<>();
     // Components
-    TextView textHoleHeader;
     TextView totalScore;
-    TextView displayPlayerName;
+    TextSwitcher holeSwitcher;
+    TextSwitcher nameSwitcher;
     ImageButton nextHoleButton;
     ImageButton nextPlayerButton;
     Button exitGameButton;
@@ -50,9 +52,14 @@ public class EnterScore extends AppCompatActivity {
         gameObject = (Game) i.getSerializableExtra("gameObject");
         currentPlayer = (Player) i.getSerializableExtra("currentPlayer");
 
+        Context context = getApplicationContext();
 
-        textHoleHeader = findViewById(R.id.textHoleHeader);
-        displayPlayerName = findViewById(R.id.playerNameDisplay);
+        holeSwitcher = findViewById(R.id.holeSwitcher);
+        holeSwitcher.setInAnimation(context, android.R.anim.slide_in_left);
+        holeSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
+        nameSwitcher = findViewById(R.id.nameSwitcher);
+        nameSwitcher.setInAnimation(context, android.R.anim.slide_in_left);
+        nameSwitcher.setOutAnimation(context, android.R.anim.slide_out_right);
         nextHoleButton = findViewById(R.id.nextHoleButton);
         nextPlayerButton = findViewById(R.id.nextPlayerButton);
         exitGameButton = findViewById(R.id.exitGameButton);
@@ -138,13 +145,10 @@ public class EnterScore extends AppCompatActivity {
             prevPlayerButton.setVisibility(View.INVISIBLE);
         }
 
-        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
-        displayPlayerName.setText(currentPlayer.getName());
+        holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+        nameSwitcher.setText(currentPlayer.getName());
         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
-
-
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -171,12 +175,12 @@ public class EnterScore extends AppCompatActivity {
     private void prevHole() {
         if (gameObject.getCurrentHole() >1) {
             gameObject.setCurrentHole(gameObject.getCurrentHole() -1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            displayPlayerName.setText(currentPlayer.getName());
+            nameSwitcher.setText(currentPlayer.getName());
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
 
@@ -194,22 +198,22 @@ public class EnterScore extends AppCompatActivity {
     private void nextHole() {
         if (gameObject.getCurrentHole() < 17) {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            displayPlayerName.setText(currentPlayer.getName());
+            nameSwitcher.setText(currentPlayer.getName());
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         } else {
             gameObject.setCurrentHole(gameObject.getCurrentHole() + 1);
-            textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+            holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
             iteratorHistory.push(playerIterator);
             currPlayerHistory.push(currentPlayer);
             playerIterator = players.listIterator();
             currentPlayer = playerIterator.next();
-            displayPlayerName.setText(currentPlayer.getName());
+            nameSwitcher.setText(currentPlayer.getName());
             totalScore.setText("Total: "+ currentPlayer.getTotalScore());
             strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
             exitGameButton.setText(finish_game_txt);
@@ -225,7 +229,7 @@ public class EnterScore extends AppCompatActivity {
             playerIterator = players.listIterator();
         }
         currentPlayer = playerIterator.next();
-        displayPlayerName.setText(currentPlayer.getName());
+        nameSwitcher.setText(currentPlayer.getName());
         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
         actionHistory.push(ActionEnum.player);
@@ -241,7 +245,7 @@ public class EnterScore extends AppCompatActivity {
             currentPlayer = playerIterator.previous();
             playerIterator.next();
         }
-        displayPlayerName.setText(currentPlayer.getName());
+        nameSwitcher.setText(currentPlayer.getName());
         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
     }
@@ -276,10 +280,10 @@ public class EnterScore extends AppCompatActivity {
                         prevHole();
                     } else {
                         gameObject.setCurrentHole(gameObject.getCurrentHole() - 1);
-                        textHoleHeader.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
+                        holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
                         playerIterator = iteratorHistory.pop();
                         currentPlayer = currPlayerHistory.pop();
-                        displayPlayerName.setText(currentPlayer.getName());
+                        nameSwitcher.setText(currentPlayer.getName());
                         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
                         strokesDisplay.setText(Integer.toString(currentPlayer.getScores()[gameObject.getCurrentHole() - 1]));
                         exitGameButton.setText(exit_game_txt);
