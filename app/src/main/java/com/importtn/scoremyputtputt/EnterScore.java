@@ -138,6 +138,13 @@ public class EnterScore extends AppCompatActivity {
                 }
             }
         }
+
+        // hide next/prev player buttons if just one player
+        if (players.size() < 2) {
+            nextPlayerButton.setVisibility(View.INVISIBLE);
+            prevPlayerButton.setVisibility(View.INVISIBLE);
+        }
+
         holeSwitcher.setText(p1_hole_ind + " " + gameObject.getCurrentHole() + " " + p2_hole_ind);
         nameSwitcher.setText(currentPlayer.getName());
         totalScore.setText("Total: "+ currentPlayer.getTotalScore());
